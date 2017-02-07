@@ -1,0 +1,53 @@
+.TH SPAC 1 spac
+.SH NAME
+spac \- file splitter/recovery utility
+.SH SYNOPSIS
+.B spac -s
+.I ifile N M
+.P
+.B "     -j"
+.I ofile file1
+.B ...
+.I fileN
+.B [...
+.I fileM
+.B ]
+.SH DESCRIPTION
+Either splits a file in parts such that it can only be recovered with a
+partition of them, or recovers the original given some of the parts
+.SH OPTIONS
+.B spac -s
+.I ifile N M
+.P
+Splits the
+.I ifile
+in
+.I M
+parts
+such that it can be recovered with
+.I N
+of them. The output files will be named
+.I ifile#i.spl
+, where i is in [0, M)
+.P
+.B spac -j
+.I ofile file1
+.B ...
+.I fileN
+.B [ ...
+.I fileM
+.B ]
+.P
+Joins the
+.I file1
+.B ...
+.I fileN
+.B [ ...
+.I fileM
+.B ]
+.I ifile
+parts.
+The output will be named
+.I ofile
+.SH SEE ALSO
+inspact(1) xspac(1)

@@ -1,0 +1,36 @@
+spac
+====
+split a file in m parts such that n are needed to recover
+
+Installation
+------------
+inside the project directory
+
+    make && su -c 'make install'
+
+Usage
+-------
+Read the manual pages or invoke the utilities without arguments
+
+Implementation
+--------------
+If n is equal to m, files Fi get random data Ri for i in 1..n-1,
+then Fn gets ([x]Ri, i in 1..n-1)
+
+If n is less than m, files Fi get Ri for i in 1..m, then for c in mCn,
+Fi = ([smin]Fx, x in c), gets ([x]Rj, j in 1..n, j != i)
+
+If the files provided are more than the ones needed, only the first group
+will be used.
+
+The file signature is [0x80, e, n, m, s], where e is the element number,
+s the original file size and n, m the user provided parameters.
+The inspact utility can be used to query file signature
+
+The xspac utility can be used to check if two groups produce the same output.
+If the files provided are more than the ones needed, only the first* group
+containing the first file and the first* group not containing the first file
+will be used.
+
+*first as the first group of files by element matching the stable permutation
+generator, not in lexicographic order by name
